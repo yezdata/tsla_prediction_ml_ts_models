@@ -144,26 +144,24 @@ When trying also simple Decision Trees and Random Forest only with past values o
 
 
 ### Part 2  
+**Regression:**  
 <div align="center">
   <img src="python/plots_tabs/GDLinearRegression_preds.png" width="45%" alt="GD Linear Regression" />
   <img src="python/plots_tabs/RandomForestRegressor_preds.png" width="45%" alt="Random Forest Regressor" />
   <img src="python/plots_tabs/XGBoostRegressor_preds.png" width="45%" alt="XGBoost Regressor" />
   <img src="python/plots_tabs/LightGBMRegressor_preds.png" width="45%" alt="LightGBM Regressor" />
 </div>
-**Regression:**  
 
-![GD LinearRegression](python/plots_tabs/GDLinearRegression_preds.png)
-![DecisionTreeRegressor](python/plots_tabs/DecisionTreeRegressor_preds.png)
-![RandomForestRegressor](python/plots_tabs/RandomForestRegressor_preds.png)
-![XGBoostRegressor](python/plots_tabs/XGBoostRegressor_preds.png)
-![LightGBMRegressor](python/plots_tabs/LightGBMRegressor_preds.png)
 
 **Classification:**
-![GD Logit Confusion matrix](python/plots_tabs/GDLogisticRegression_conf_m.png)
-![DecisionTreeClassifier Confusion Matrix](python/plots_tabs/DecisionTreeClassifier_conf_m.png)
-![RandomForestClassifier Confusion Matrix](python/plots_tabs/RandomForestClassifier_conf_m.png)
-![XGBoostClassifier Confusion Matrix](python/plots_tabs/XGBoostClassifier_conf_m.png)
-![LightGBMClassifier Confusion Matrix](python/plots_tabs/LightGBMClassifier_conf_m.png)
+<div align="center">
+  <img src="python/plots_tabs/GDLogisticRegression_conf_m.png" width="45%" alt="GD Logit Confusion matrix" />
+  <img src="python/plots_tabs/DecisionTreeClassifier_conf_m.png" width="45%" alt="DecisionTreeClassifier Confusion Matrix" />
+  <img src="python/plots_tabs/RandomForestClassifier_conf_m.png" width="45%" alt="RandomForestClassifier Confusion Matrix" />
+  <img src="python/plots_tabs/XGBoostClassifier_conf_m.png" width="45%" alt="XGBoostClassifier Confusion Matrix" />
+  <img src="python/plots_tabs/LightGBMClassifier_conf_m.png" width="45%" alt="LightGBMClassifier Confusion Matrix" />
+</div>
+
 
 - **NOTE:**  
 1 express that log_return is > 0.005 (log return rises atleast by this "significance" threshold) and 0 otherwise (log return is constant or negative)
