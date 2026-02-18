@@ -1,11 +1,32 @@
-# Tesla Price Sentiment Based TimeSeries and ML models Prediction
+# Tesla Price Sentiment: Time Series vs. ML on unusual tweets sentiment data
 
-- **Part 1 of this project has its own report available (in Czech) in this file: [Report in PDF](r/report.pdf) or [Report in DOCX](r/report.docx)**
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
+![R](https://img.shields.io/badge/R-4.0+-276DC3?logo=r&logoColor=white)
+![XGBoost](https://img.shields.io/badge/XGBoost-Gradient%20Boosting-EB4223?logo=xgboost&logoColor=white)
+![LightGBM](https://img.shields.io/badge/LightGBM-Model-FF7F50)
+![Random Forest](https://img.shields.io/badge/Random_Forest-Algorithm-228B22)
+![Gradient Descent](https://img.shields.io/badge/Gradient_Descent-Optimization-FF4F8B)
+![Time Series](https://img.shields.io/badge/Time_Series-Analysis-007EC6)
+![Scikit-learn](https://img.shields.io/badge/scikit--learn-Machine%20Learning-F7931E?logo=scikitlearn&logoColor=white)
 
+> **Quick Summary:** A comparative analysis exploring the predictability of Tesla (TSLA) stock prices. This project contrasts traditional econometric models (ARIMA/VAR) against modern Machine Learning algorithms (Random Forest, XGBoost), incorporating a unique sentiment indicator derived from Elon Musk's tweets (2010–2025) via FinBERT.
 
-This project explores and evaluates different approaches for predicting stock prices using financial and sentiment time series data. Its main goal is to identify the most effective models and assess their practical performance in trading scenarios.
-This project also introduces unusual data - sentiment indicator derived from Elon Musk's tweets from 2010 to 2025 which contains keywords related to "Tesla" company. Elon's tweets can be influential to markets, so sentiment indicated by each tweet related to Tesla might incorporate relevant data to my models. FinBERT model is used to make NLP analysis to get sentiment indicators.
+**📄 Full Report (Part 1 - Czech):** [PDF Version](r/report.pdf) | [DOCX Version](r/report.docx)
 
+---
+
+## 📊 Key Results: Regression & Classification
+
+The evaluation reveals that short-term stock returns exhibit low predictability. Simple models often outperformed complex architectures, suggesting a low signal-to-noise ratio in the dataset.
+
+| Model Category | Best Model | Metric | Performance | Observation |
+| :--- | :--- | :---: | :---: | :--- |
+| **Time Series (R)** | **ARIMA (Univariate)** | RMSE | **0.0381** | Beats multivariate ARIMAX/VAR; proves exogenous variables added noise. |
+| **ML Regression** | **Random Forest** | RMSE | **0.0382** | Matches ARIMA performance; beats complex boosters (XGBoost/LightGBM). |
+| **ML Classification** | **GD Logistic Reg** | Accuracy | **57.4%** | Best capability to predict direction (Up/Down) rather than magnitude. |
+| **Baseline** | Naive | RMSE | 0.0540 | All trained models successfully beat the Naive baseline. |
+
+---
 
 # Project Overview
 
@@ -20,6 +41,7 @@ This project also introduces unusual data - sentiment indicator derived from Elo
    - Try alternative basic ML methods to compare them with traditional time series models
    - Try to incorporate classification prediction task as predicting wheter log return will be positive or neutral / negative
 
+---
 
 ## Part 1 (directory r/)
 **Unconventional data, conventional models**
@@ -41,17 +63,19 @@ This project also introduces unusual data - sentiment indicator derived from Elo
 - All models are trained recursively on rolling window -> walk forward prediction validation on same data
 - LSTM is planned aswell.
 
+---
 
-# Tools used
-- Python (Pandas, Numpy, SK-learn, XGBoost, LightGBM, Statsmodels, Seaborn, Matplotlib, Transformers - HuggingFace)
-- R (Tidyverse, Tidyquant)
+## 💻 Tech Stack
 
-- HuggingFace - model FinBERT -> NLP sentiment analysis
-- PCA
+* **Languages:** Python 3.12, R (4.0+)
+* **Time Series (R):** `Tidyverse`, `Tidyquant` (ARIMA, VAR, VARX)
+* **Machine Learning (Python):** `Pandas`, `NumPy`, `Scikit-learn`, `XGBoost`, `LightGBM`, `Statsmodels`
+* **NLP:** `Transformers` (Hugging Face FinBERT)
+* **Visualization:** `Matplotlib`, `Seaborn`, `Ggplot2`
 
+---
 
-
-# Outcomes
+# Full Outcomes
 
 ## Traditional time series models (Part 1)
 
@@ -102,16 +126,17 @@ This project also introduces unusual data - sentiment indicator derived from Elo
 - Log Loss metric indicates models have limited confidence in their predictions
 - On ROC AUC metric, models show relatively weak ability to differentiate between classes across different thresholds
 - These models perform quite well on clasification prediction task given hard predictability of short horizon log return
-
+  
 
 ### Short-term stock returns exhibit very low predictability. All tested models achieved only marginal improvements over basic mean of y or randomness, which is consistent with the known difficulty of short-horizon financial forecasting. Moreover, sentiment extracted from tweets does not provide strong predictive power in these settings.
 - **Though regression models perform quite well on visualizations, metrics show they aren't really reliable**   
 - **All models combined (classification and regression) show that in these settings, they are better in predicting the direction of future log return than the size of its change**
 - **There aren't any sufficient significant patterns/relationships in this data finded, which when modeled with these models, could be reliably used to predict log return of TSLA. Regressor models show similar MSE to basic ARIMA of low order, which also by plot show weak oscilation around mean (~0) of the log return timeseries.**   
 
-
 - **NOTE**:  
 When trying also simple Decision Trees and Random Forest only with past values of log return (1-10 lags) to avoid using irelevant features (all of the used features also doesn't really show high abs corellation with y), results are similar, ofter worse
+
+---
 
 ## Predictions in plot:
 ### Part 1  
@@ -119,6 +144,12 @@ When trying also simple Decision Trees and Random Forest only with past values o
 
 
 ### Part 2  
+<div align="center">
+  <img src="python/plots_tabs/GDLinearRegression_preds.png" width="45%" alt="GD Linear Regression" />
+  <img src="python/plots_tabs/RandomForestRegressor_preds.png" width="45%" alt="Random Forest Regressor" />
+  <img src="python/plots_tabs/XGBoostRegressor_preds.png" width="45%" alt="XGBoost Regressor" />
+  <img src="python/plots_tabs/LightGBMRegressor_preds.png" width="45%" alt="LightGBM Regressor" />
+</div>
 **Regression:**  
 
 ![GD LinearRegression](python/plots_tabs/GDLinearRegression_preds.png)
