@@ -61,7 +61,6 @@ The evaluation reveals that short-term stock returns exhibit low predictability.
 - At the moment there is Gradient Descent Linear Regression and Gradient Descend Logistic Regression done, written from scratch.
 - Projects also uses regression and classification Decision Trees, Random Forests, XGBoost and LightGBM models.
 - All models are trained recursively on rolling window -> walk forward prediction validation on same data
-- LSTM is planned aswell.
 
 ---
 
